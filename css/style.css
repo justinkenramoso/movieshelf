@@ -1,0 +1,104 @@
+:root {
+    --color-background: #121212;
+    --color-surface: #1E1E1E;
+    --color-text: #F5F1E8;
+    --color-text-muted: #9B9B9B;
+    --color-accent: #B83A3A;
+    --color-border: #303030;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img {
+    display: block;
+    max-inline-size: 100%;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.logo {
+    color: var(--color-accent);
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav > a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: larger;
+}
+
+main{
+    width: 100%;
+    padding: 0 60px;
+}
+
+h2 {
+    font-size: xx-large;
+}
+
+.movie-controls {
+    border-radius: 10px;
+    background-color: var(--color-surface);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.search-bar {
+    width: 100%;
+    font-size: larger;
+    padding: 10px;
+}
+
+.movie-controls-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie-controls-bottom > div {
+    display: flex;
+    gap: 20px;
+}
+
+.filter-and-sort > div > select {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.add-button {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: medium;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.movie-card > img {
+    border-radius: 10px;
+}
