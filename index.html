@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieShelf</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" type="module" defer></script>
 </head>
 <body>
     
@@ -13,22 +14,22 @@
         <h1 class="logo">MovieShelf</h1>
 
         <nav>
-            <a href="">HOME</a>
+            <a href="index.html">HOME</a>
             <a href="">ABOUT</a>
         </nav>
 
     </header>
 
-    <main>
+    <main class="home-main">
 
         <section id="movies-section">
 
-            <h2>MY MOVIES</h2>
+            <h2 class="home-subheading">MY MOVIES</h2>
 
             <div class="movie-controls">
 
                 <div class="movie-controls-top">
-                     <input class="search-bar" type="text" name="movie-search" id="movie-search" placeholder="Search">
+                     <input class="search-bar" type="search" name="movie-search" id="movie-search" placeholder="Search your collection...">
                 </div>
 
                 <div class="movie-controls-bottom">
@@ -63,49 +64,21 @@
                     </div>
                     
                     
-                    <button id="add-movie-button" class="add-button">Add Movies +</button>
+                    <button id="add-movies-button" class="add-button">Add Movies +</button>
+                        
+                    <dialog id="add-movies-modal">
+                        <input type="search" name="add-movies-search" id="add-movies-search" placeholder="Search movies to add...">
+                        <section id="search-results-container">
+                        </section>
+                        <button id="add-movies-cancel">Cancel</button>
+                    </dialog>
 
                 </div>
             
             </div>
 
-            <div class="cards-container">
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                 <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
-                <article class="movie-card">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" alt="">
-                </article>
+            <div id="movie-cards-container" class="cards-container">
+                
             </div>
 
 
