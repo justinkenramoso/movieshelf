@@ -1,4 +1,4 @@
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlM2EwZWMwOTU5YTJmNWJkMmVjYmY4OTRjNmI1MjJlOCIsIm5iZiI6MTY3MDgxNDE0My4xMTgsInN1YiI6IjYzOTY5OWJmNzMwNGI1MDA3ZjdkYmJlOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tCL91veqOmEDHaER8m6ZM-I-GoKMua2HpNHbDf20ACE"
+const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZmU0Yjc4ZDhkYTBiYjY0NDMzYWQxNGQ4NTgwNTIzNyIsIm5iZiI6MTY3MDgxNDE0My4xMTgsInN1YiI6IjYzOTY5OWJmNzMwNGI1MDA3ZjdkYmJlOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rLS31bW64vAUstUEvuddqU_d43gWw0QdsTQphwjh6Gw"
 
 export const posterBaseUrl = "https://image.tmdb.org/t/p/w600_and_h900_face"
 export const backdropBaseUrl = "https://image.tmdb.org/t/p/w1280"

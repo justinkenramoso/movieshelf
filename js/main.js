@@ -5,9 +5,7 @@ import { clearSearchResults } from "./ui.js";
 import { checkStorage } from "./storage.js";
 
 checkStorage();
-
 renderUserMovies();
-searchMovies("the dark knight")
 
 
 const addMoviesButton = document.querySelector("#add-movies-button")

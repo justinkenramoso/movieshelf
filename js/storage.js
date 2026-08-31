@@ -5,6 +5,7 @@ import { backdropBaseUrl } from "./api.js";
 export function checkStorage() {
 
     if (!localStorage.getItem("collection")) {
+        console.log("Nothing found in collection.")
         const emptyCollection = []
         localStorage.setItem("collection", JSON.stringify(emptyCollection))
     }
@@ -24,12 +25,12 @@ export function getCollection() {
 export async function addToCollection(movieId) {
 
     const movieDetails = (await getMovieDetails(movieId));
-    console.log(movieDetails)
 
     const movieToAdd = {
         id: movieDetails.id,
         title: movieDetails.title,
-        posterPath: `${posterBaseUrl}${movieDetails.posterPath}`,
+        posterPath: movieDetails.posterPath,
+        genres: movieDetails.genres,
         collected: true,
         watched: false,
         favorite: false,
@@ -43,5 +44,15 @@ export async function addToCollection(movieId) {
     currentCollection.push(movieToAdd);
 
     localStorage.setItem("collection", JSON.stringify(currentCollection))
+
+}
+
+export function findInCollection (movieId) {
+
+    const collection = JSON.parse(localStorage.getItem("collection"))
+
+    const movie = collection.find(movie=>movie.id === movieId)
+
+    return movie
 
 }
