@@ -126,28 +126,44 @@ export function renderSearchResults(results) {
         const buttonsWrapper = document.createElement("div")
         buttonsWrapper.classList.add("result-buttons-container")
         const addMovieButton = document.createElement("button")
+        const collectText = document.createElement("p")
+        collectText.textContent = "COLLECT"
+        addMovieButton.append(collectText)
+
+        const checkIcon = document.createElement("img")
+        checkIcon.src = "./assets/icons/check.svg"
+        checkIcon.classList.add("search-result-button-icon")
+        const plusIcon = document.createElement("img")
+        plusIcon.src = "./assets/icons/plus-dark.svg"
+        plusIcon.classList.add("search-result-button-icon")
+
         
 
         if (findInCollection(movie.id)) {
             addMovieButton.classList.add("already-added-button")
-            addMovieButton.textContent = "Added"
+            addMovieButton.append (checkIcon);
+          
+
         } else {
             addMovieButton.classList.add("add-to-collection-button")
-            addMovieButton.textContent = "Add to Collection"
+            addMovieButton.append (plusIcon);
             addMovieButton.addEventListener("click", async ()=>{
             await addToCollection(movie.id);
-            addMoviesSearchBar.value = ""
-            searchResultsContainer.replaceChildren();
-            addMoviesModal.close();
             renderUserMovies();
-        })
+            addMovieButton.classList.replace("add-to-collection-button","already-added-button")
+            addMovieButton.replaceChild(checkIcon,plusIcon)
+        }, {once: true})
         }
 
         
         const viewDetailsButton = document.createElement("a")
         viewDetailsButton.classList.add("view-details-button")
         viewDetailsButton.href = `movie.html?id=${Number(movie.id)}`
-        viewDetailsButton.textContent = "View Details"
+        viewDetailsButton.textContent = "DETAILS"
+        const viewDetailsIcon = document.createElement("img")
+        viewDetailsIcon.classList.add("search-result-button-icon")
+        viewDetailsIcon.src = "./assets/icons/eye.svg"
+        viewDetailsButton.append(viewDetailsIcon)
 
         buttonsWrapper.append(addMovieButton,viewDetailsButton)
         infoWrapper.append(infoTitle,infoYear,infoOverview)

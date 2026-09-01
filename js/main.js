@@ -11,6 +11,8 @@ renderUserMovies();
 const addMoviesButton = document.querySelector("#add-movies-button")
 const cancelAddMoviesButton = document.querySelector("#add-movies-cancel")
 const addMoviesModal = document.querySelector("#add-movies-modal")
+const addMoviesSearchBar = document.querySelector("#add-movies-search")
+const searchResultsContainer = document.querySelector("#search-results-container")
 
 
 addMoviesButton.addEventListener("click", ()=>{
@@ -18,6 +20,8 @@ addMoviesButton.addEventListener("click", ()=>{
 })
 cancelAddMoviesButton.addEventListener("click", ()=>{
     addMoviesModal.close();
+    addMoviesSearchBar.value = ""
+    searchResultsContainer.replaceChildren();
 })
 
 let searchTimer;
