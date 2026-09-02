@@ -4,7 +4,7 @@ import { getCollection } from "./storage.js";
 import { findInCollection } from "./storage.js";
 
 const cardsContainer = document.querySelector("#movie-cards-container")
-const moviePage = document.querySelector(".movie-page-main")
+const heroSection = document.querySelector(".movie-page-hero-section")
 const addMoviesSearchBar = document.querySelector("#add-movies-search")
 const searchResultsContainer = document.querySelector("#search-results-container")
 const addMoviesModal = document.querySelector("#add-movies-modal")
@@ -81,6 +81,8 @@ export async function renderMoviePage() {
     favoriteButtonIcon.src = "./assets/icons/heart-plus.svg"
 
 
+    const taglineOverviewWrapper = document.createElement("div")
+    taglineOverviewWrapper.classList.add("tagline-overview-wrapper")
     const tagline = document.createElement("p")
     tagline.classList.add("movie-page-tagline")
     tagline.textContent = movie.tagline
@@ -91,12 +93,12 @@ export async function renderMoviePage() {
     favoriteButton.append(favoriteButtonIcon)
     addToCollectionButton.append(addToCollectionButtonIcon)
     buttonsWrapper.append(addToCollectionButton,favoriteButton)
-    info.append(title,genres,releaseDate,buttonsWrapper,tagline,overview)
+    taglineOverviewWrapper.append(tagline,overview)
+    info.append(title,genres,releaseDate,buttonsWrapper,taglineOverviewWrapper)
     container.append(poster,info)
     hero.append(container)
 
-    moviePage.append(hero);
-
+    heroSection.append(hero);
 }
 
 export function renderSearchResults(results) {

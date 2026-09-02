@@ -38,7 +38,6 @@ img {
 body {
     background-color: var(--color-background);
     color: var(--color-text);
-    padding-bottom: 50px;
 }
 
 header {
@@ -212,13 +211,6 @@ nav > a {
     width: 100%;
     cursor: default;
     padding: 10px;
-    transition: 0.2s;
-}
-
-.search-result-info:hover {
-    background-color: var(--color-text);
-    color: var(--color-surface);
-    
 }
 
 .search-result-title {
@@ -309,7 +301,7 @@ nav > a {
     padding: 20px;
     color: var(--color-text);
     display: grid;
-    grid-template-rows: auto auto auto 1fr auto auto;
+    grid-template-rows: auto auto auto auto 1fr
 }
 
 .movie-page-title {
@@ -335,6 +327,12 @@ nav > a {
 
 .movie-page-genres > span {
     padding-right: 10px;
+}
+
+.tagline-overview-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .movie-page-tagline {
@@ -384,4 +382,80 @@ nav > a {
 
 .favorite-button-inactive:hover {
      transform: scale(1.02); 
+}
+
+.movie-page-cast-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align:end ;
+}
+
+.movie-page-heading {
+    font-size: var(--fontsize-h3);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: start;
+}
+
+.cast-cards-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.cast-portrait {
+    width: 2000px;
+}
+
+.see-full-cast {
+    text-decoration: none;
+    color: var(--color-text);
+    margin: 0 0 0 auto;
+}
+
+.user-review-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.user-review-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.user-review-container-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.user-review-heading {
+    font-size: var(--fontsize-body);
+    display: flex;
+    gap: 10px;
+}
+
+.stars-container {
+    display: flex;
+    gap: 3px;
+}
+
+.user-review-body {
+    font-size: var(--fontsize-body);
+}
+
+footer {
+    text-align: center;
+    background-color: var(--color-surface);
+    border-top: 2px solid var(--color-border);
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px
 }
