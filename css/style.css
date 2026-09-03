@@ -346,6 +346,7 @@ nav > a {
     align-items: baseline;
     gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 .movie-page-addtocollectionbutton {
@@ -402,19 +403,31 @@ nav > a {
 .cast-cards-container {
     display: flex;
     flex-wrap: nowrap;
-    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 20px;
     text-align: center;
     margin-bottom: 10px;
+    scrollbar-color: var(--color-surface) var(--color-surface);
+    padding-bottom: 15px;
 }
 
-.cast-portrait {
-    width: 2000px;
+.cast-card {
+    flex: 0 0 auto;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
 }
 
-.see-full-cast {
-    text-decoration: none;
-    color: var(--color-text);
-    margin: 0 0 0 auto;
+.cast-name {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.cast-character {
+    font-size: 0.7rem;
+    font-style: italic
 }
 
 .user-review-section {

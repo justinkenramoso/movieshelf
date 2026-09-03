@@ -9,6 +9,8 @@ const addMoviesSearchBar = document.querySelector("#add-movies-search")
 const searchResultsContainer = document.querySelector("#search-results-container")
 const addMoviesModal = document.querySelector("#add-movies-modal")
 
+const castCardsContainer = document.querySelector(".cast-cards-container")
+
 export function renderUserMovies() {
 
     cardsContainer.replaceChildren()
@@ -32,9 +34,8 @@ export function renderUserMovies() {
 
 }
 
-export async function renderMoviePage() {
+export async function renderMoviePageHero(movieId) {
 
-    const movieId = new URLSearchParams(window.location.search).get("id")
     const movie = await getMovieDetails(movieId)
 
     const hero = document.createElement("div")
@@ -99,6 +100,30 @@ export async function renderMoviePage() {
     hero.append(container)
 
     heroSection.append(hero);
+}
+
+export function renderMovieCast(cast) {
+
+    cast.map(actor=>{
+        const castCard = document.createElement("div")
+        castCard.classList.add("cast-card")
+        const castPortrait = document.createElement("img")
+        castPortrait.classList.add("cast-portrait")
+        castPortrait.src = actor.portraitPath
+        castPortrait.alt = `Portrait of ${actor.name}`
+        const castName = document.createElement("p")
+        castName.classList.add("cast-name")
+        castName.textContent = actor.name
+        const castCharacter = document.createElement("p")
+        castCharacter.classList.add("cast-character")
+        castCharacter.textContent = actor.character
+
+        castCard.append(castPortrait,castName,castCharacter)
+        castCardsContainer.append(castCard)
+    })
+
+
+
 }
 
 export function renderSearchResults(results) {

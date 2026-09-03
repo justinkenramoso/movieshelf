@@ -28,6 +28,30 @@ function transformMovie(rawMovie) {
 
 }
 
+function transformCredits (rawCredits) {
+
+    const rawCast = rawCredits.cast;
+
+    const cast = rawCast.map(actor => {
+        const newActor =  {
+            name: actor.name,
+            character: actor.character,
+        }
+
+        if (actor.profile_path) {
+            newActor.portraitPath = `${posterBaseUrl}${actor.profile_path}`
+        } else {
+            newActor.portraitPath = "../assets/images/placeholder_portrait.png"
+        }
+
+        return newActor
+    } )
+
+    return cast;
+
+
+}
+
 export async function getMovieDetails(movieId) {
 
     const url = `https://api.themoviedb.org/3/movie/${movieId}`
@@ -43,7 +67,7 @@ export async function getMovieDetails(movieId) {
 
         const response = await fetch(url,options)
         if (!response.ok) {
-            throw new Error("Failed to fetch from TMDB")
+            throw new Error("Failed to fetch movie details from TMDB")
         }
 
         const movie = transformMovie(await response.json());
@@ -54,6 +78,36 @@ export async function getMovieDetails(movieId) {
 
         console.error(error.message)
 
+    }
+
+}
+
+export async function getMovieCast(movieId) {
+
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/credits`
+    const options = {
+        method: "GET",
+        headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    try {
+
+        const response = await fetch(url,options)
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch movie cast from TMDB")
+        }
+
+        const cast = transformCredits(await response.json())
+
+        return cast;
+
+
+    } catch (error) {
+        console.error(error.message)
     }
 
 }
