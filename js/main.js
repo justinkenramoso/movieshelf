@@ -4,8 +4,16 @@ import { renderSearchResults } from "./ui.js";
 import { clearSearchResults } from "./ui.js";
 import { checkStorage } from "./storage.js";
 
-checkStorage();
-renderUserMovies();
+
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+        checkStorage()
+        renderUserMovies()
+    } else {
+        checkStorage()
+        renderUserMovies()
+    }
+})
 
 
 const addMoviesButton = document.querySelector("#add-movies-button")

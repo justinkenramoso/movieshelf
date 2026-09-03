@@ -1,6 +1,4 @@
 import { getMovieDetails } from "./api.js"
-import { posterBaseUrl } from "./api.js";
-import { backdropBaseUrl } from "./api.js";
 
 export function checkStorage() {
 
@@ -22,6 +20,16 @@ export function getCollection() {
     }
 }
 
+export function updateCollection(updatedCollection) {
+
+    try {
+        const newCollection = JSON.stringify(updatedCollection)
+        localStorage.setItem("collection", newCollection)
+    } catch {
+        console.error("Failed to update user collection")
+    }
+}
+
 export async function addToCollection(movieId) {
 
     const movieDetails = (await getMovieDetails(movieId));
@@ -32,24 +40,30 @@ export async function addToCollection(movieId) {
         posterPath: movieDetails.posterPath,
         genres: movieDetails.genres,
         collected: true,
-        watched: false,
         favorite: false,
         personalRating: null,
-        personalComment: "",
+        personalReviewHeading: "",
+        personalReviewBody: "",
         addedTimestamp: Date.now()
     }
 
-    const currentCollection = JSON.parse(localStorage.getItem("collection"));
+    const collection = getCollection();
+    collection.push(movieToAdd);
+    updateCollection(collection);
 
-    currentCollection.push(movieToAdd);
+}
 
-    localStorage.setItem("collection", JSON.stringify(currentCollection))
+export async function removeFromCollection(movieId) {
+
+    const collection = getCollection();
+    const updatedCollection = collection.filter(movie=> movie.id != movieId )
+    updateCollection(updatedCollection);
 
 }
 
 export function findInCollection (movieId) {
 
-    const collection = JSON.parse(localStorage.getItem("collection"))
+    const collection = getCollection();
 
     const movie = collection.find(movie=>movie.id === movieId)
 

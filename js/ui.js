@@ -1,5 +1,5 @@
 import { getMovieDetails } from "./api.js";
-import { addToCollection } from "./storage.js";
+import { addToCollection, removeFromCollection } from "./storage.js";
 import { getCollection } from "./storage.js";
 import { findInCollection } from "./storage.js";
 
@@ -8,6 +8,9 @@ const heroSection = document.querySelector(".movie-page-hero-section")
 const addMoviesSearchBar = document.querySelector("#add-movies-search")
 const searchResultsContainer = document.querySelector("#search-results-container")
 const addMoviesModal = document.querySelector("#add-movies-modal")
+const removeFromCollectionModal = document.querySelector(".remove-from-collection-modal")
+const removeFromCollectionConfirm = document.querySelector(".remove-from-collection-confirm")
+const removeFromCollectionCancel = document.querySelector(".remove-from-collection-cancel")
 
 const castCardsContainer = document.querySelector(".cast-cards-container")
 
@@ -69,17 +72,42 @@ export async function renderMoviePageHero(movieId) {
     const buttonsWrapper = document.createElement("div")
     buttonsWrapper.classList.add("movie-page-buttonswrapper")
 
-
     const addToCollectionButton = document.createElement("button")
     addToCollectionButton.classList = "movie-page-addtocollectionbutton"
     addToCollectionButton.textContent = "COLLECT"
     const addToCollectionButtonIcon = document.createElement("img")
     addToCollectionButtonIcon.src = "./assets/icons/plus-dark.svg"
-    const favoriteButton = document.createElement("button")
-    favoriteButton.classList.add("favorite-button-inactive")
-    favoriteButton.textContent = "FAVORITE"
-    const favoriteButtonIcon = document.createElement("img")
-    favoriteButtonIcon.src = "./assets/icons/heart-plus.svg"
+    addToCollectionButton.append(addToCollectionButtonIcon)
+    const removeFromCollectionButton = document.createElement("button")
+    removeFromCollectionButton.classList = "movie-page-removefromcollectionbutton"
+    removeFromCollectionButton.textContent = "COLLECT"
+    const removeFromCollectionButtonIcon = document.createElement("img")
+    removeFromCollectionButtonIcon.src = "./assets/icons/check-muted.svg"
+    removeFromCollectionButton.append(removeFromCollectionButtonIcon)
+
+    if (findInCollection(movie.id)){
+        buttonsWrapper.append(removeFromCollectionButton)
+    } else {
+        buttonsWrapper.append(addToCollectionButton)
+    }
+
+    addToCollectionButton.addEventListener("click", () => {
+        addToCollection(movieId);
+        buttonsWrapper.replaceChild(removeFromCollectionButton,addToCollectionButton)
+    })
+
+    removeFromCollectionButton.addEventListener("click", () => {
+        removeFromCollectionModal.showModal();
+    })
+
+    removeFromCollectionConfirm.addEventListener("click", ()=> {
+        removeFromCollection(movieId)
+        buttonsWrapper.replaceChild(addToCollectionButton,removeFromCollectionButton)
+        removeFromCollectionModal.close()
+    })
+    removeFromCollectionCancel.addEventListener("click", ()=> {
+        removeFromCollectionModal.close()
+    })
 
 
     const taglineOverviewWrapper = document.createElement("div")
@@ -91,9 +119,6 @@ export async function renderMoviePageHero(movieId) {
     overview.classList.add("movie-page-overview")
     overview.textContent = movie.overview
 
-    favoriteButton.append(favoriteButtonIcon)
-    addToCollectionButton.append(addToCollectionButtonIcon)
-    buttonsWrapper.append(addToCollectionButton,favoriteButton)
     taglineOverviewWrapper.append(tagline,overview)
     info.append(title,genres,releaseDate,buttonsWrapper,taglineOverviewWrapper)
     container.append(poster,info)
@@ -158,7 +183,7 @@ export function renderSearchResults(results) {
         addMovieButton.append(collectText)
 
         const checkIcon = document.createElement("img")
-        checkIcon.src = "./assets/icons/check.svg"
+        checkIcon.src = "./assets/icons/check-muted.svg"
         checkIcon.classList.add("search-result-button-icon")
         const plusIcon = document.createElement("img")
         plusIcon.src = "./assets/icons/plus-dark.svg"

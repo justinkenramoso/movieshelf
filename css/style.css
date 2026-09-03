@@ -40,6 +40,10 @@ body {
     color: var(--color-text);
 }
 
+main {
+    min-height: 100vh;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -347,6 +351,12 @@ nav > a {
     gap: 20px;
     flex-wrap: wrap;
     margin-bottom: 10px;
+    font-size: var(--fontsize-caption);
+    font-weight: bold;
+}
+
+.movie-page-buttonswrapper >button {
+    cursor: pointer;
 }
 
 .movie-page-addtocollectionbutton {
@@ -355,8 +365,6 @@ nav > a {
     background-color: var(--color-text);
     border-radius: 25px;
     border: 2px solid var(--color-text);
-    font-size: var(--fontsize-caption);
-    font-weight: bold;
     transition: transform 0.2s ease-in-out;
     display: flex;
     align-items: center;
@@ -367,22 +375,50 @@ nav > a {
      transform: scale(1.02); 
 }
 
-.favorite-button-inactive {
-    color: var(--color-text);
+.movie-page-removefromcollectionbutton {
+    color: var(--color-text-muted);
     padding: 10px 25px;
-    background-color: var(--color-accent);
-    border: 2px solid var(--color-accent);
+    background-color: transparent;
     border-radius: 25px;
-    font-size: var(--fontsize-caption);
-    font-weight: bold;
+    border: 2px solid var(--color-text-muted);
     transition: transform 0.2s ease-in-out;
     display: flex;
     align-items: center;
     gap: 3px;
 }
 
-.favorite-button-inactive:hover {
+.movie-page-removefromcollectionbutton:hover {
      transform: scale(1.02); 
+}
+
+.remove-from-collection-modal {
+    margin: auto;
+    border-radius: 10px;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    padding: 20px;
+    text-align: center;
+}
+
+.remove-from-collection-prompt {
+    margin-bottom: 20px;
+    font-size: var(--fontsize-body);
+}
+
+.remove-from-collection-confirm {
+    padding: 10px;
+    background-color: var(--color-accent);
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.remove-from-collection-cancel {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .movie-page-cast-section {
@@ -450,7 +486,7 @@ nav > a {
 .user-review-heading {
     font-size: var(--fontsize-body);
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .stars-container {
