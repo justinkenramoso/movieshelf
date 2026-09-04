@@ -30,6 +30,17 @@ export function updateCollection(updatedCollection) {
     }
 }
 
+export function updateReview(movieId, newReviewHeading, newReviewBody){
+
+    const collection = getCollection();
+    const movie = collection.find(collectionItem => collectionItem.id === movieId)
+
+    movie.personalReviewHeading = newReviewHeading;
+    movie.personalReviewBody = newReviewBody;
+
+    updateCollection(collection);
+}
+
 export async function addToCollection(movieId) {
 
     const movieDetails = (await getMovieDetails(movieId));

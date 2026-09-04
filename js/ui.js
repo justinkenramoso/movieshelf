@@ -11,7 +11,6 @@ const addMoviesModal = document.querySelector("#add-movies-modal")
 const removeFromCollectionModal = document.querySelector(".remove-from-collection-modal")
 const removeFromCollectionConfirm = document.querySelector(".remove-from-collection-confirm")
 const removeFromCollectionCancel = document.querySelector(".remove-from-collection-cancel")
-
 const castCardsContainer = document.querySelector(".cast-cards-container")
 
 export function renderUserMovies() {
@@ -231,3 +230,4 @@ export function clearSearchResults () {
     searchResultsContainer.replaceChildren()
 
 }
+

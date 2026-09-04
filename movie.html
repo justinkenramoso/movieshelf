@@ -38,7 +38,7 @@
                 <div class="user-review-container-top">
                     <div class="user-review-heading">  
                         <h4>Overrated Sci-Fi Mess</h4>
-                        <button id="edit-review-headline">
+                        <button id="edit-review-button">
                             <img src="./assets/icons/edit-muted.svg" alt="">
                         </button>
                     </div>
@@ -48,7 +48,10 @@
                         <img src="./assets/icons/star-filled.svg" alt="">
                         <img src="./assets/icons/star-filled.svg" alt="">
                         <img src="./assets/icons/star.svg" alt="">
-                        <img src="./assets/icons/edit-muted.svg" alt="">
+                        <button>
+                            <img src="./assets/icons/edit-muted.svg" alt="" id="edit-rating-button">
+                        </button>
+                        
                     </div>
                 </div>
 
@@ -68,6 +71,21 @@
         <p class="remove-from-collection-prompt">Are you sure you want to remove this movie from your collection? Your rating and review will also be lost.</p>
         <button class="remove-from-collection-confirm">Remove</button>
         <button class="remove-from-collection-cancel">Cancel</button>
+    </dialog>
+
+    <dialog class="update-review-modal">
+        <div>
+            <div class="review-inputs-container">
+                <input type="text" name="update-review-heading" id="update-review-heading" placeholder="Review title...">
+                <textarea name="update-review-body" id="update-review-body" placeholder="Say something about the movie..."></textarea>
+            </div>
+            <div>
+                <button class="update-review-confirm">Save</button>
+                <button class="update-review-cancel">Cancel</button>
+            </div>
+        </div>
+        
+        
     </dialog>
 
     
