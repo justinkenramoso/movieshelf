@@ -13,6 +13,11 @@ const removeFromCollectionConfirm = document.querySelector(".remove-from-collect
 const removeFromCollectionCancel = document.querySelector(".remove-from-collection-cancel")
 const castCardsContainer = document.querySelector(".cast-cards-container")
 
+const defaultReviewHeading = "No review added"
+const defaultReviewBody = "User review not found. Write something!"
+const userReviewHeading = document.querySelector(".user-review-heading")
+const userReviewBody = document.querySelector(".user-review-body")
+
 export function renderUserMovies() {
 
     cardsContainer.replaceChildren()
@@ -34,6 +39,20 @@ export function renderUserMovies() {
 
     })
 
+}
+
+export function renderUserReviews(movieId) {
+
+    if (findInCollection(movieId)) {
+        const movie = findInCollection(movieId)
+        userReviewHeading.textContent = movie.personalReviewHeading
+        userReviewBody.textContent = movie.personalReviewBody
+    } else {
+        userReviewHeading.textContent = defaultReviewHeading
+        userReviewBody.textContent = defaultReviewBody
+    }
+
+    
 }
 
 export async function renderMoviePageHero(movieId) {
@@ -101,6 +120,7 @@ export async function renderMoviePageHero(movieId) {
 
     removeFromCollectionConfirm.addEventListener("click", ()=> {
         removeFromCollection(movieId)
+        renderUserReviews(movieId)
         buttonsWrapper.replaceChild(addToCollectionButton,removeFromCollectionButton)
         removeFromCollectionModal.close()
     })

@@ -53,8 +53,8 @@ export async function addToCollection(movieId) {
         collected: true,
         favorite: false,
         personalRating: null,
-        personalReviewHeading: "",
-        personalReviewBody: "",
+        personalReviewHeading: "No review added",
+        personalReviewBody: "User review not found. Write something!",
         addedTimestamp: Date.now()
     }
 
@@ -80,4 +80,14 @@ export function findInCollection (movieId) {
 
     return movie
 
+}
+
+export function isValidReview (heading,body) {
+
+    return heading &&
+    typeof(heading) === "string" &&
+        heading != "" &&
+        body &&
+        typeof(body) === "string" &&
+        body != ""
 }
