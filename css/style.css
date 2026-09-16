@@ -527,29 +527,62 @@ nav > a {
     height: 100%;
 }
 
-.update-review-confirm, .update-review-cancel {
+.update-review-confirm, .update-review-cancel, .update-rating-confirm, .update-rating-cancel {
     padding: 10px 50px;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.2s;
 }
-.update-review-confirm:hover, .update-review-cancel:hover {
+.update-review-confirm:hover, .update-review-cancel:hover, .update-rating-confirm:hover, .update-rating-cancel:hover {
     scale: 1.03;
 }
 
-.update-review-confirm {
+.update-review-confirm, .update-rating-confirm {
     background-color: var(--color-text);
     color: var(--color-surface);
 }
 
-
-.stars-container {
-    display: flex;
-    gap: 3px;
-}
-
 #edit-review-button, #edit-rating-button {
     cursor: pointer;
+}
+
+.update-rating-modal {
+    margin: auto;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border);
+    padding: 20px;
+    color: var(--color-text);
+}
+
+.update-rating-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+#user-new-rating {
+    font-size: var(--fontsize-h3);
+    background-color: var(--color-text);
+    color: var(--color-surface);
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.user-rating-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--fontsize-body);
+}
+
+.user-rating {
+    font-weight: bold;
+}
+
+.user-rating-star {
+    width: 20px;
 }
 
 .user-review-body {

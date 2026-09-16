@@ -42,12 +42,10 @@
                             <img src="./assets/icons/edit-muted.svg" alt="">
                         </button>
                     </div>
-                    <div class="stars-container">
-                        <img src="./assets/icons/star-filled.svg" alt="">
-                        <img src="./assets/icons/star-filled.svg" alt="">
-                        <img src="./assets/icons/star-filled.svg" alt="">
-                        <img src="./assets/icons/star-filled.svg" alt="">
-                        <img src="./assets/icons/star.svg" alt="">
+                    <div class="user-rating-container">
+                        <p class="user-rating-label">My Rating:</p>
+                        <p class="user-rating">?/10</p>
+                        <img class="user-rating-star" src="./assets/icons/star-filled.svg" alt="">
                         <button>
                             <img src="./assets/icons/edit-muted.svg" alt="" id="edit-rating-button">
                         </button>
@@ -86,6 +84,16 @@
         </div>
         
         
+    </dialog>
+
+    <dialog class="update-rating-modal">
+        <div class="update-rating-container">
+            <label for="user-new-rating">My Rating:</label>
+            <input type="number" name="user-new-rating" id="user-new-rating" min="0" max="10" placeholder="10">
+            <button class="update-rating-confirm">Save</button>
+            <button class="update-rating-cancel">Cancel</button>
+        </div>
+      
     </dialog>
 
     

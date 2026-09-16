@@ -1,9 +1,6 @@
-import { renderMovieCast, renderMoviePageHero, renderUserReviews } from "./ui.js";
+import { renderMovieCast, renderMoviePageHero, renderUserRating, renderUserReviews } from "./ui.js";
 import { getMovieCast } from "./api.js";
-import { findInCollection, isValidReview, updateReview } from "./storage.js";
-
-const userReviewHeading = document.querySelector(".user-review-heading")
-const userReviewBody = document.querySelector(".user-review-body")
+import { findInCollection, isValidRating, isValidReview, updateReview, updateRating } from "./storage.js";
 
 const updateReviewModal = document.querySelector(".update-review-modal")
 const editReviewButton = document.querySelector("#edit-review-button")
@@ -12,12 +9,20 @@ const updateReviewConfirmButton = document.querySelector(".update-review-confirm
 const reviewHeadingInput = document.querySelector("#update-review-heading")
 const reviewBodyInput = document.querySelector("#update-review-body")
 
+const editRatingButton = document.querySelector("#edit-rating-button")
+const userNewRating = document.querySelector("#user-new-rating")
+const updateRatingModal = document.querySelector(".update-rating-modal")
+const updateRatingCancel = document.querySelector(".update-rating-cancel")
+const updateRatingConfirm = document.querySelector(".update-rating-confirm")
+
+
 const movieIdString = new URLSearchParams(window.location.search).get("id")
 const movieId = Number(movieIdString);
 
 await renderMoviePageHero(movieId);
 renderMovieCast(await getMovieCast(movieId));
 renderUserReviews(movieId)
+renderUserRating(movieId)
 
 editReviewButton.addEventListener("click", ()=> {
     if (findInCollection(movieId)){
@@ -49,4 +54,33 @@ updateReviewConfirmButton.addEventListener("click", ()=> {
 
     updateReviewModal.close()
 
+})
+
+editRatingButton.addEventListener("click", ()=> {
+    updateRatingModal.showModal()
+})
+
+updateRatingConfirm.addEventListener("click", ()=> {
+
+    if(isValidRating(userNewRating.value)) {
+
+        try {
+            console.log(userNewRating.value)
+            updateRating(movieId, userNewRating.value)
+            renderUserRating(movieId)
+        } catch (error) {
+            console.error(`Failed to update rating : ${error.message}`)
+        }
+
+    } else {
+        alert ("Please write a valid rating from 0-10")
+    }
+
+    updateRatingModal.close();
+
+
+})
+
+updateRatingCancel.addEventListener("click", () => {
+    updateRatingModal.close()
 })

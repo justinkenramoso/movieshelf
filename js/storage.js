@@ -41,6 +41,17 @@ export function updateReview(movieId, newReviewHeading, newReviewBody){
     updateCollection(collection);
 }
 
+export function updateRating(movieId, newRating) {
+
+    const collection = getCollection();
+    const movie = collection.find(collectionItem => collectionItem.id === movieId)
+
+    movie.personalRating = newRating;
+
+    updateCollection(collection)
+
+}
+
 export async function addToCollection(movieId) {
 
     const movieDetails = (await getMovieDetails(movieId));
@@ -50,8 +61,6 @@ export async function addToCollection(movieId) {
         title: movieDetails.title,
         posterPath: movieDetails.posterPath,
         genres: movieDetails.genres,
-        collected: true,
-        favorite: false,
         personalRating: null,
         personalReviewHeading: "No review added",
         personalReviewBody: "User review not found. Write something!",
@@ -90,4 +99,10 @@ export function isValidReview (heading,body) {
         body &&
         typeof(body) === "string" &&
         body != ""
+}
+
+export function isValidRating (rating) {
+
+    return rating >= 0 &&
+        rating <= 10
 }

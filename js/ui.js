@@ -18,6 +18,8 @@ const defaultReviewBody = "User review not found. Write something!"
 const userReviewHeading = document.querySelector(".user-review-heading")
 const userReviewBody = document.querySelector(".user-review-body")
 
+const userRating = document.querySelector(".user-rating")
+
 export function renderUserMovies() {
 
     cardsContainer.replaceChildren()
@@ -52,8 +54,20 @@ export function renderUserReviews(movieId) {
         userReviewBody.textContent = defaultReviewBody
     }
 
-    
 }
+
+export function renderUserRating(movieId) {
+    
+    const movie = findInCollection(movieId)
+
+    if(movie && movie.personalRating) {
+        userRating.textContent = `${movie.personalRating}/10`
+    } else {
+        userRating.textContent = "?/10"
+    }
+
+}
+
 
 export async function renderMoviePageHero(movieId) {
 
